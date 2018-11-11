@@ -36,3 +36,30 @@ WASD로 움직이며 보스의 패턴을 피하며 클릭으로 공격하여 적
 빠른 전진 공격 : 전방에 달려가면서 적을 휘두르며 공격함
 소환 : 슬라임을 소환함
 ```
+
+### 스탯 데이터
+
+```
+AutoDestroyTime : 시체가 사라지는 시간
+TurnSpeed : 모든 캐릭터가 도는 속도
+
+플레이어
+PlayerMaxHp
+PlayerAttackRange
+PlayerMoveSpeed
+PlayerPower
+
+슬라임
+SlimeMaxHp
+SlimeAttackRange
+SlimeMoveSpeed
+SlimePower
+
+고블린
+GoblinMaxHp
+GoblinAttackRange
+GoblinMoveSpeed
+GoblinPower
+GoblinHillWindDamageRate : 힐윈드 패턴에서 들어가는 공격력 비례랑
+GoblinRushDamageRate : 질주 패턴에서 들어가는 공격력 
+```
