@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterPATROL : MonsterFSMState {
+public class SlimePATROL : SlimeFSMState {
 
     public Vector3 destination;
 
@@ -22,13 +22,13 @@ public class MonsterPATROL : MonsterFSMState {
     {
         if (GameLib.DetectCharacter(_manager.Sight, _manager.PlayerCC))
         {
-            _manager.SetState(MonsterState.CHASE);
+            _manager.SetState(SlimeState.CHASE);
             return;
         }
 
         if (Vector3.Distance(destination, transform.position) < 0.1f)
         {
-            _manager.SetState(MonsterState.IDLE);
+            _manager.SetState(SlimeState.IDLE);
             return;
         }
 

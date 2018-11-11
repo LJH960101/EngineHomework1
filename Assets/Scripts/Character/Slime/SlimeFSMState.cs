@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MonsterFSMManager))]
-public class MonsterFSMState : MonoBehaviour
+[RequireComponent(typeof(SlimeFSMManager))]
+public class SlimeFSMState : MonoBehaviour
 {
 
-    protected MonsterFSMManager _manager;
+    protected SlimeFSMManager _manager;
 
     private void Awake()
     {
-        _manager = GetComponent<MonsterFSMManager>();
+        _manager = GetComponent<SlimeFSMManager>();
     }
 
     public virtual void BeginState()

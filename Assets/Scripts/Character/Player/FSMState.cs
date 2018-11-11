@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(FSMManager))]
+[RequireComponent(typeof(PlayerFSMManager))]
 public class FSMState : MonoBehaviour
 {
-    protected FSMManager _manager;
+    protected PlayerFSMManager _manager;
 
     private void Awake()
     {
-        _manager = GetComponent<FSMManager>();    
+        _manager = GetComponent<PlayerFSMManager>();    
     }
 
     public virtual void BeginState()

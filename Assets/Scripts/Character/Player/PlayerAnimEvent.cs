@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerAnimEvent : MonoBehaviour
 {
-    FSMManager _manager;
+    PlayerFSMManager _manager;
     private void Awake()
     {
-        _manager = transform.root.GetComponent<FSMManager>();
+        _manager = transform.root.GetComponent<PlayerFSMManager>();
     }
 
     void HitCheck()

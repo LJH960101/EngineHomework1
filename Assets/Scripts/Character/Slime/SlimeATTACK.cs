@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterDEAD : MonsterFSMState {
+public class SlimeATTACK : SlimeFSMState {
 
     public override void BeginState()
     {
@@ -16,6 +16,11 @@ public class MonsterDEAD : MonsterFSMState {
 
     private void Update()
     {
+        if (Vector3.Distance(_manager.PlayerTransform.position, transform.position) >= _manager.Stat.AttackRange)
+        {
+            _manager.SetState(SlimeState.CHASE);
+            return;
+        }
 
     }
 }

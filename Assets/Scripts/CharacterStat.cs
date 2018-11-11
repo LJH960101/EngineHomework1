@@ -30,8 +30,8 @@ public class CharacterStat : MonoBehaviour
             if (lastHitBy == null)
                 lastHitBy = from;
 
-            GetComponent<IFSMManager>().SetDeadState();
-            from.GetComponent<IFSMManager>().NotifyTargetKilled();
+            GetComponent<FSMManager>().SetDeadState();
+            from.GetComponent<FSMManager>().NotifyTargetKilled();
             Debug.Log(name + " is Killed by " + lastHitBy.name);
         }
     }

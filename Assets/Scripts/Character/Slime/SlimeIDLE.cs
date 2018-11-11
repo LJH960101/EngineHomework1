@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterIDLE : MonsterFSMState {
+public class SlimeIDLE : SlimeFSMState {
 
-    public float idleTime = 5.0f;
+    public float idleTime = 1.0f;
     private float time = 0.0f;
 
     public override void BeginState()
     {
         base.BeginState();
 
-        time = 0.0f;
+        // 적당히 랜덤으로 아이들타임을 진행시킨채로 초기화.
+        time = Random.Range(0.0f, 0.5f);
     }
 
     public override void EndState()
@@ -23,14 +24,14 @@ public class MonsterIDLE : MonsterFSMState {
     {
         if(GameLib.DetectCharacter(_manager.Sight, _manager.PlayerCC))
         {
-            _manager.SetState(MonsterState.CHASE);
+            _manager.SetState(SlimeState.CHASE);
             return;
         }
 
         time += Time.deltaTime;
         if(time > idleTime)
         {
-            _manager.SetState(MonsterState.PATROL);
+            _manager.SetState(SlimeState.PATROL);
         }
 
     }
