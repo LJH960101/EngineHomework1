@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetCheckAttribute : System.Attribute
-{
-}
-
 public static class GameLib
 {
     public static void CKMove(this CharacterController cc,

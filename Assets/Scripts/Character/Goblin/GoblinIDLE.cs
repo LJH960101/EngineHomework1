@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeIDLE : SlimeFSMState {
+public class GoblinIDLE : GoblinFSMState
+{
     private float idleTime = 1.0f;
     private float time = 0.0f;
 
@@ -21,17 +22,18 @@ public class SlimeIDLE : SlimeFSMState {
 
     private void Update()
     {
-        if(GameLib.DetectCharacter(_manager.Sight, _manager.PlayerCC))
+        /*
+        if (GameLib.DetectCharacter(_manager.Sight, _manager.PlayerCC))
         {
-            _manager.SetState(SlimeState.CHASE);
+            _manager.SetState(GoblinState.CHASE);
             return;
         }
 
         time += Time.deltaTime;
-        if(time > idleTime)
+        if (time > idleTime)
         {
             _manager.SetState(SlimeState.PATROL);
         }
-
+        */
     }
 }

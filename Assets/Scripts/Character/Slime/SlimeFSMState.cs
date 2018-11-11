@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(SlimeFSMManager))]
 public class SlimeFSMState : MonoBehaviour
 {
-
     protected SlimeFSMManager _manager;
 
     private void Awake()

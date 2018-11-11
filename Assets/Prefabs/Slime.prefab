@@ -11,6 +11,23 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1289989899232490}
   m_IsPrefabAsset: 1
+--- !u!1 &1164515724662790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4716806719310846}
+  - component: {fileID: 23016155129768810}
+  - component: {fileID: 102891830411713112}
+  m_Layer: 0
+  m_Name: HP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1284829409561530
 GameObject:
   m_ObjectHideFlags: 1
@@ -44,7 +61,7 @@ GameObject:
   - component: {fileID: 114037757979304530}
   m_Layer: 10
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,23 +144,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1997986416739654
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4351512956127178}
-  - component: {fileID: 33972838052778338}
-  - component: {fileID: 23571662242937582}
-  m_Layer: 10
-  m_Name: Body
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!4 &4286219640627998
 Transform:
   m_ObjectHideFlags: 1
@@ -152,19 +152,6 @@ Transform:
   m_GameObject: {fileID: 1552961550023396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.62, z: 0.27}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4721476842857818}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4351512956127178
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997986416739654}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4721476842857818}
@@ -211,6 +198,19 @@ Transform:
   m_Father: {fileID: 4799245278492652}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4716806719310846
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164515724662790}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.67, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4721476842857818}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4721476842857818
 Transform:
   m_ObjectHideFlags: 1
@@ -221,9 +221,9 @@ Transform:
   m_LocalPosition: {x: -10.15, y: 0, z: 6.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4351512956127178}
   - {fileID: 4286219640627998}
   - {fileID: 4799245278492652}
+  - {fileID: 4716806719310846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -253,7 +253,7 @@ Transform:
   - {fileID: 4416902805115362}
   - {fileID: 4589699637244030}
   m_Father: {fileID: 4721476842857818}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20036131071385152
 Camera:
@@ -295,12 +295,12 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!23 &23571662242937582
+--- !u!23 &23016155129768810
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997986416739654}
+  m_GameObject: {fileID: 1164515724662790}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -310,7 +310,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 85a4f57eea13999459c141d889c55ce3, type: 2}
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -330,13 +330,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33972838052778338
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997986416739654}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!95 &95110049322568896
 Animator:
   serializedVersion: 3
@@ -355,6 +348,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!102 &102891830411713112
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164515724662790}
+  m_Text: 50%
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190210
 --- !u!114 &114023780124346800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -401,6 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightAspect: 3
+  _statData: {fileID: 11400000, guid: f24f3b609b7789d41ba2d982ece05ea5, type: 2}
   startState: 0
   _currentState: 0
 --- !u!114 &114692538494350506
@@ -414,11 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8ffa7c0949d8646981cacb7449293c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
-  _moveSpeed: 3
-  _turnSpeed: 540
-  _attackRange: 2
   lastHitBy: {fileID: 0}
+  statData: {fileID: 11400000, guid: f24f3b609b7789d41ba2d982ece05ea5, type: 2}
 --- !u!114 &114836443611488278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -441,7 +453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7028a7209e3c2147874d053725500e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleTime: 5
 --- !u!137 &137202614181388136
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -502,7 +513,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
+  m_Height: 3
   m_Radius: 0.75
   m_SlopeLimit: 45
   m_StepOffset: 0.3

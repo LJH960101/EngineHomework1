@@ -2,33 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[TargetCheck]
-public class PlayerATTACK : FSMState
+public class PlayerATTACK : MonoBehaviour
 {
-    public override void BeginState()
+    PlayerFSMManager _manager;
+    private void Awake()
     {
-        base.BeginState();
+        _manager = GetComponent<PlayerFSMManager>();
     }
-
-    public override void EndState()
-    {
-        base.EndState();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        if(_manager.Target != null) transform.LookAt(_manager.Target);
-    }
-
     public void AttackCheck()
     {
-        Debug.Log("AttackCheck");
+        var hitObjects = Physics.BoxCastAll(transform.position, transform.lossyScale / 2,
+            _manager.MyStatData.PlayerAttackRange * transform.forward);
+        foreach(var hitObject in hitObjects)
+        {
+            if (hitObject.collider.gameObject.tag == "Monster")
+            {
+                CharacterStat targetStat =
+                    hitObject.collider.GetComponent<CharacterStat>();
 
-        CharacterStat targetStat =
-            _manager.Target.GetComponent<CharacterStat>();
-
-        CharacterStat.ProcessDamage(_manager.Stat, targetStat);
+                CharacterStat.ProcessDamage(_manager.Stat, targetStat);
+            }
+        }
     }
-
 }

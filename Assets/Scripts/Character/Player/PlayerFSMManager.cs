@@ -6,8 +6,6 @@ public enum PlayerState
 {
     IDLE = 0,
     RUN,
-    CHASE,
-    ATTACK,
     DEAD
 }
 
@@ -15,6 +13,7 @@ public enum PlayerState
 [ExecuteInEditMode]
 public class PlayerFSMManager : FSMManager
 {
+    private bool _onAttack = false;
     private bool _isinit = false;
     public PlayerState startState = PlayerState.IDLE;
     private Dictionary<PlayerState, FSMState> _states = new Dictionary<PlayerState, FSMState>();
@@ -34,23 +33,11 @@ public class PlayerFSMManager : FSMManager
         get { return _states[_currentState]; }
     }
 
-    private Transform _marker;
-    public Transform Marker
-    {
-        get
-        {
-            return _marker;
-        }
-    }
-
     private CharacterController _cc;
     public CharacterController CC { get { return _cc; } }
 
     private PlayerStat _stat;
     public PlayerStat Stat { get { return _stat; } }
-
-    private Transform _target;
-    public Transform Target { get { return _target; } }
 
     private Animator _anim;
     public Animator Anim { get { return _anim; } }
@@ -62,15 +49,9 @@ public class PlayerFSMManager : FSMManager
     protected override void Awake()
     {
         base.Awake();
-
         SetGizmoColor(Color.red);
+        ShowSight(false);
         clickLayer = (1 << 9) + (1 << 10);
-        _marker = GameObject.FindGameObjectWithTag("Marker").transform;
-        if(null == _marker)
-        {
-            Debug.LogError("No Marker Assigned!");
-            return;
-        }
 
         _cc = GetComponent<CharacterController>();
         _stat = GetComponent<PlayerStat>();
@@ -111,28 +92,20 @@ public class PlayerFSMManager : FSMManager
         _anim.SetInteger("CurrentState", (int)_currentState);
     }
 
+    // 움직이는지 체크하는 함수
+    public bool OnMove()
+    {
+        return Input.GetAxis("Horizontal") >= 0.01f || Input.GetAxis("Horizontal") <= -0.01f ||
+            Input.GetAxis("Vertical") >= 0.01f || Input.GetAxis("Vertical") <= -0.01f;
+    }
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // 공격처리는 죽음을 제외한 모든 상황에서 처리
+        if (CurrentState != PlayerState.DEAD)
         {
-            Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if(Physics.Raycast(r, out hit, 10000.0f, clickLayer))
-            {
-                if(hit.transform.gameObject.layer == 9)
-                {
-                    _marker.position = hit.point;
-                    _target = null;
-                    SetState(PlayerState.RUN);
-                    _marker.gameObject.SetActive(true);
-                }
-                else if(hit.transform.gameObject.layer == 10)
-                {
-                    _target = hit.transform;
-                    SetState(PlayerState.CHASE);
-                    _marker.gameObject.SetActive(false);
-                }
-            }
+            _onAttack = Input.GetAxis("Fire1") >= 0.01f ? true : false;
+            _anim.SetBool("OnAttack", _onAttack);
         }
     }
 

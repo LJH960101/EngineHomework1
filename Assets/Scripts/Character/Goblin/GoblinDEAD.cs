@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIDLE : FSMState
+public class GoblinDEAD : GoblinFSMState
 {
     public override void BeginState()
     {
@@ -16,7 +16,6 @@ public class PlayerIDLE : FSMState
 
     private void Update()
     {
-        if (_manager.OnMove())
-            _manager.SetState(PlayerState.RUN);
+
     }
 }

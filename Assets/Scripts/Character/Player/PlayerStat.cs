@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerStat : CharacterStat
 {
-    public StatData playerStat;
-
-    private void Awake()
+    protected override void Awake()
     {
-        Debug.Log(playerStat.maxHp);
+        base.Awake();
+        _maxHp = statData.PlayerMaxHp;
+        _hp = _maxHp;
+        _attackRange = statData.PlayerAttackRange;
+        _moveSpeed = statData.PlayerMoveSpeed;
+        _power = statData.PlayerPower;
     }
 }

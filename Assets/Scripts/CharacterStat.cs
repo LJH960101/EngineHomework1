@@ -4,23 +4,37 @@ using UnityEngine;
 
 public class CharacterStat : MonoBehaviour
 {
-    [SerializeField]
-    private float _hp = 100.0f;
+    protected float _power = 10.0f;
+    public float Power { get { return _power; } }
+
+    protected float _maxHp = 100.0f;
+    public float MaxHp { get { return _maxHp; } }
+
+    protected float _hp = 100.0f;
     public float Hp { get { return _hp; } }
 
-    [SerializeField]
-    private float _moveSpeed = 3.0f;
+    protected float _moveSpeed = 3.0f;
     public float MoveSpeed { get { return _moveSpeed; } }
 
-    [SerializeField]
-    private float _turnSpeed = 540.0f;
+    protected float _turnSpeed = 540.0f;
     public float TurnSpeed { get { return _turnSpeed; } }
 
-    [SerializeField]
-    private float _attackRange = 2.0f;
+    protected float _attackRange = 2.0f;
     public float AttackRange { get { return _attackRange; } }
-
+    
+    [HideInInspector]
     public CharacterStat lastHitBy = null;
+    [SerializeField]
+    protected StatData statData;
+
+    GameObject _hpObj;
+    TextMesh _hpTextMesh;
+    protected virtual void Awake()
+    {
+        _turnSpeed = statData.TurnSpeed;
+        _hpObj = transform.Find("HP").gameObject;
+        _hpTextMesh = _hpObj.GetComponent<TextMesh>();
+    }
 
     public void TakeDamage(CharacterStat from, float damage)
     {
@@ -32,18 +46,30 @@ public class CharacterStat : MonoBehaviour
 
             GetComponent<FSMManager>().SetDeadState();
             from.GetComponent<FSMManager>().NotifyTargetKilled();
-            Debug.Log(name + " is Killed by " + lastHitBy.name);
         }
     }
 
     private static float CalcDamage(CharacterStat from, CharacterStat to)
     {
-        return 50.0f;
+        return from.Power;
     }
 
     public static void ProcessDamage(CharacterStat from, CharacterStat to)
     {
         float finalDamage = CalcDamage(from, to);
         to.TakeDamage(from, finalDamage);
+    }
+
+    public static void ProcessDamage(CharacterStat from, CharacterStat to, int damage)
+    {
+        float finalDamage = damage;
+        to.TakeDamage(from, finalDamage);
+    }
+
+    protected virtual void Update()
+    {
+        // 체력 게이지의 값을 수정하고 회전을 카메라에 맞춘다.
+        _hpTextMesh.text = (_hp / _maxHp * 100f) + "%";
+        _hpObj.transform.rotation = Camera.main.transform.rotation;
     }
 }

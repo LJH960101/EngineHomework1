@@ -11,5 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0eaa74914b7174c918933777cfd6bb, type: 3}
   m_Name: StatData
   m_EditorClassIdentifier: 
-  maxHp: 300
-  baseRange: 50
+  AutoDestroyTime: 3
+  TurnSpeed: 540
+  PlayerMaxHp: 100
+  PlayerAttackRange: 2
+  PlayerMoveSpeed: 10
+  PlayerPower: 10
+  SlimeMaxHp: 20
+  SlimeAttackRange: 1.5
+  SlimeMoveSpeed: 6
+  SlimePower: 10
+  GoblinMaxHp: 1000
+  GoblinAttackRange: 3
+  GoblinMoveSpeed: 5
+  GoblinPower: 10
+  GoblinHillWindDamageRate: 2
+  GoblinRushDamageRate: 3

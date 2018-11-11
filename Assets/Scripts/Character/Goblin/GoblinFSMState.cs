@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerFSMManager))]
-public class FSMState : MonoBehaviour
+[RequireComponent(typeof(GoblinFSMManager))]
+public class GoblinFSMState : MonoBehaviour
 {
-    protected PlayerFSMManager _manager;
+    protected GoblinFSMManager _manager;
 
     private void Awake()
     {
-        _manager = GetComponent<PlayerFSMManager>();    
+        _manager = GetComponent<GoblinFSMManager>();
     }
 
     public virtual void BeginState()
@@ -18,11 +18,6 @@ public class FSMState : MonoBehaviour
     }
 
     public virtual void EndState()
-    {
-
-    }
-
-    private void Update()
     {
 
     }

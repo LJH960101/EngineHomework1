@@ -21,6 +21,6 @@ public class SlimeATTACK : SlimeFSMState {
             _manager.SetState(SlimeState.CHASE);
             return;
         }
-
+        transform.LookAt(_manager.PlayerTransform);
     }
 }

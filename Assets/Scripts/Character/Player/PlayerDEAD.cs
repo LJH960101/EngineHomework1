@@ -13,10 +13,4 @@ public class PlayerDEAD : FSMState
     {
         base.EndState();
     }
-
-    protected override void Update()
-    {
-        base.Update();
-
-    }
 }
