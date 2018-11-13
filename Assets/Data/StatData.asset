@@ -18,7 +18,7 @@ MonoBehaviour:
   PlayerMoveSpeed: 10
   PlayerPower: 10
   SlimeMaxHp: 20
-  SlimeAttackRange: 1.5
+  SlimeAttackRange: 2
   SlimeMoveSpeed: 6
   SlimePower: 10
   GoblinMaxHp: 1000

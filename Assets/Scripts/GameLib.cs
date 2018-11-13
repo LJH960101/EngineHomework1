@@ -4,6 +4,59 @@ using UnityEngine;
 
 public static class GameLib
 {
+    // 단순하게 적을 찾고, 적에게 피해를 입히는 함수
+    public static void SimpleDamageProcess(Transform transform, float Range, string targetTag, CharacterStat ownerStat)
+    {
+        AttackProcess(
+            AttackTargetsByRange(transform, Range),
+            targetTag, ownerStat);
+    }
+
+    // 단순하게 적을 찾고, 적에게 피해를 입히는 함수
+    public static void SimpleDamageProcess(Transform transform, float Range, string targetTag, CharacterStat ownerStat, int damage)
+    {
+        AttackProcess(
+            AttackTargetsByRange(transform, Range),
+            targetTag, ownerStat, damage);
+    }
+
+    // 간단한 사각형 Raycasting을 하는 함수.
+    public static RaycastHit[] AttackTargetsByRange(Transform transform, float Range)
+    {
+        return Physics.BoxCastAll(transform.position, transform.lossyScale / 2,
+            Range * transform.forward);
+    }
+
+    // 여러 오브젝트들에 대해 간단한 정보로 피해를 입히는 함수.
+    public static void AttackProcess(RaycastHit[] hitObjects, string targetTag, CharacterStat ownerStat)
+    {
+        foreach (var hitObject in hitObjects)
+        {
+            if (hitObject.collider.gameObject.tag == targetTag)
+            {
+                CharacterStat targetStat =
+                    hitObject.collider.GetComponent<CharacterStat>();
+
+                CharacterStat.ProcessDamage(ownerStat, targetStat);
+            }
+        }
+    }
+
+    // 여러 오브젝트들에 대해 간단한 정보로 피해를 입히는 함수.
+    public static void AttackProcess(RaycastHit[] hitObjects, string targetTag, CharacterStat ownerStat, int damage)
+    {
+        foreach (var hitObject in hitObjects)
+        {
+            if (hitObject.collider.gameObject.tag == targetTag)
+            {
+                CharacterStat targetStat =
+                    hitObject.collider.GetComponent<CharacterStat>();
+
+                CharacterStat.ProcessDamage(ownerStat, targetStat, damage);
+            }
+        }
+    }
+
     public static void CKMove(this CharacterController cc,
         Vector3 targetPosition,
         CharacterStat stat)

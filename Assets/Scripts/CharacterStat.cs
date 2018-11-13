@@ -38,7 +38,7 @@ public class CharacterStat : MonoBehaviour
 
     public void TakeDamage(CharacterStat from, float damage)
     {
-        _hp = Mathf.Clamp(_hp - damage, 0, 100);
+        _hp = Mathf.Clamp(_hp - damage, 0, _maxHp);
         if(_hp <= 0)
         {
             if (lastHitBy == null)

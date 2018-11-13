@@ -11,17 +11,7 @@ public class PlayerATTACK : MonoBehaviour
     }
     public void AttackCheck()
     {
-        var hitObjects = Physics.BoxCastAll(transform.position, transform.lossyScale / 2,
-            _manager.MyStatData.PlayerAttackRange * transform.forward);
-        foreach(var hitObject in hitObjects)
-        {
-            if (hitObject.collider.gameObject.tag == "Monster")
-            {
-                CharacterStat targetStat =
-                    hitObject.collider.GetComponent<CharacterStat>();
-
-                CharacterStat.ProcessDamage(_manager.Stat, targetStat);
-            }
-        }
+        GameLib.SimpleDamageProcess(transform, _manager.Stat.AttackRange,
+            "Monster", _manager.Stat);
     }
 }

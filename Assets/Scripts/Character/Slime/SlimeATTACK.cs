@@ -23,4 +23,9 @@ public class SlimeATTACK : SlimeFSMState {
         }
         transform.LookAt(_manager.PlayerTransform);
     }
+    public void AttackCheck()
+    {
+        GameLib.SimpleDamageProcess(transform, _manager.Stat.AttackRange,
+            "Player", _manager.Stat);
+    }
 }
