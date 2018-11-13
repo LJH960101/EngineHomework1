@@ -5,6 +5,11 @@ using UnityEngine;
 public enum GoblinState
 {
     IDLE = 0,
+    CHASE,
+    BASICATTACK,
+    HILLWIND,
+    RUSH,
+    SOMMON,
     DEAD
 }
 
@@ -79,6 +84,7 @@ public class GoblinFSMManager : FSMManager
         _currentState = newState;
         _states[_currentState].BeginState();
         _states[_currentState].enabled = true;
+        _anim.SetBool("OnAttack", false);
         _anim.SetInteger("CurrentState", (int)_currentState);
     }
 

@@ -23,4 +23,5 @@ public class StatData : ScriptableObject
     public float GoblinPower = 10f;
     public float GoblinHillWindDamageRate = 2f;
     public float GoblinRushDamageRate = 3f;
+    public float GoblinSkillRate = 0.1f;
 }

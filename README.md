@@ -62,4 +62,5 @@ GoblinMoveSpeed
 GoblinPower
 GoblinHillWindDamageRate : 힐윈드 패턴에서 들어가는 공격력 비례랑
 GoblinRushDamageRate : 질주 패턴에서 들어가는 공격력 
+GoblinSkillRate : 고블린이 스킬을 사용할 확률
 ```

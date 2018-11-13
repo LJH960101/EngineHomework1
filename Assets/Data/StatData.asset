@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoDestroyTime: 3
   TurnSpeed: 540
-  PlayerMaxHp: 100
+  PlayerMaxHp: 200
   PlayerAttackRange: 2
   PlayerMoveSpeed: 10
   PlayerPower: 10
