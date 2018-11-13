@@ -7,6 +7,7 @@ public class PlayerDEAD : FSMState
     public override void BeginState()
     {
         base.BeginState();
+        GetComponent<Collider>().enabled = false;
     }
 
     public override void EndState()
