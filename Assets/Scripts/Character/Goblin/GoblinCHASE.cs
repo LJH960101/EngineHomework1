@@ -16,14 +16,9 @@ public class GoblinCHASE : GoblinFSMState
 
     private void Update()
     {
-        if (!GameLib.DetectCharacter(_manager.Sight, _manager.PlayerCC))
-        {
-            _manager.SetState(GoblinState.IDLE);
-            return;
-        }
-
         if (Vector3.Distance(_manager.PlayerTransform.position, transform.position) < _manager.Stat.AttackRange)
         {
+            transform.LookAt(_manager.PlayerTransform);
             int randPattern = Random.Range(0, 100);
             // 스킬 발동 확률에 들었는가?
             if (randPattern <= (int)(_manager.MyStatData.GoblinSkillRate * 100f))

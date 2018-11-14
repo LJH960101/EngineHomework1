@@ -21,4 +21,9 @@ public class GoblinFSMState : MonoBehaviour
     {
 
     }
+
+    public virtual void AttackBehavior()
+    {
+
+    }
 }

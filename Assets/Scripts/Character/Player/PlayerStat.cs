@@ -11,6 +11,6 @@ public class PlayerStat : CharacterStat
         _hp = _maxHp;
         _attackRange = statData.PlayerAttackRange;
         _moveSpeed = statData.PlayerMoveSpeed;
-        _power = statData.PlayerPower;
+        _str = statData.PlayerStr;
     }
 }

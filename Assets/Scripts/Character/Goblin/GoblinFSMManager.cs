@@ -5,6 +5,7 @@ using UnityEngine;
 public enum GoblinState
 {
     IDLE = 0,
+    PATROL,
     CHASE,
     BASICATTACK,
     HILLWIND,
@@ -20,6 +21,9 @@ public class GoblinFSMManager : FSMManager
     private bool _isinit = false;
     public GoblinState startState = GoblinState.IDLE;
     private Dictionary<GoblinState, GoblinFSMState> _states = new Dictionary<GoblinState, GoblinFSMState>();
+
+    [HideInInspector]
+    public bool _bOnFound = false;
 
     [SerializeField]
     private GoblinState _currentState;
@@ -46,6 +50,10 @@ public class GoblinFSMManager : FSMManager
     private Animator _anim;
     public Animator Anim { get { return _anim; } }
 
+    public void AttackBehavior()
+    {
+        _states[CurrentState].AttackBehavior();
+    }
     protected override void Awake()
     {
         base.Awake();
@@ -84,7 +92,6 @@ public class GoblinFSMManager : FSMManager
         _currentState = newState;
         _states[_currentState].BeginState();
         _states[_currentState].enabled = true;
-        _anim.SetBool("OnAttack", false);
         _anim.SetInteger("CurrentState", (int)_currentState);
     }
 
@@ -96,6 +103,7 @@ public class GoblinFSMManager : FSMManager
 
     public override void NotifyTargetKilled()
     {
+        _bOnFound = false;
         SetState(GoblinState.IDLE);
     }
 

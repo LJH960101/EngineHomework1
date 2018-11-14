@@ -11,6 +11,6 @@ public class SlimeStat : CharacterStat
         _hp = _maxHp;
         _attackRange = statData.SlimeAttackRange;
         _moveSpeed = statData.SlimeMoveSpeed;
-        _power = statData.SlimePower;
+        _str = statData.SlimeStr;
     }
 }

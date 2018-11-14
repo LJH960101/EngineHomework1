@@ -47,20 +47,27 @@ TurnSpeed : 모든 캐릭터가 도는 속도
 PlayerMaxHp
 PlayerAttackRange
 PlayerMoveSpeed
-PlayerPower
+PlayerStr
 
 슬라임
 SlimeMaxHp
 SlimeAttackRange
 SlimeMoveSpeed
-SlimePower
+SlimeStr
 
 고블린
 GoblinMaxHp
 GoblinAttackRange
 GoblinMoveSpeed
-GoblinPower
+GoblinStr
+
 GoblinHillWindDamageRate : 힐윈드 패턴에서 들어가는 공격력 비례랑
+GoblinHillWindRange : 힐윈드 패턴의 반지름
+
 GoblinRushDamageRate : 질주 패턴에서 들어가는 공격력 
+GoblinRushDistance : 질주 패턴의 거리
+
+GoblinSommonMany : 소환 패턴의 최대 소환 수
+
 GoblinSkillRate : 고블린이 스킬을 사용할 확률
 ```

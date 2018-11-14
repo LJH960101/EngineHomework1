@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoblinStat : CharacterStat
 {
+    public GameObject throwableSlime;
     protected override void Awake()
     {
         base.Awake();
@@ -11,6 +12,6 @@ public class GoblinStat : CharacterStat
         _hp = _maxHp;
         _attackRange = statData.GoblinAttackRange;
         _moveSpeed = statData.GoblinMoveSpeed;
-        _power = statData.GoblinPower;
+        _str = statData.GoblinStr;
     }
 }

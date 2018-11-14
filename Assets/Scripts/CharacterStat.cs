@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacterStat : MonoBehaviour
 {
-    protected float _power = 10.0f;
-    public float Power { get { return _power; } }
+    protected float _str = 10.0f;
+    public float Str { get { return _str; } }
 
     protected float _maxHp = 100.0f;
     public float MaxHp { get { return _maxHp; } }
@@ -51,7 +51,7 @@ public class CharacterStat : MonoBehaviour
 
     private static float CalcDamage(CharacterStat from, CharacterStat to)
     {
-        return from.Power;
+        return from.Str;
     }
 
     public static void ProcessDamage(CharacterStat from, CharacterStat to)

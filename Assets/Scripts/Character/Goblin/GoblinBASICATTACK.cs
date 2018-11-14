@@ -14,8 +14,9 @@ public class GoblinBASICATTACK : GoblinFSMState
         base.EndState();
     }
 
-    private void Update()
+    public override void AttackBehavior()
     {
-
+        GameLib.SimpleDamageProcess(transform, _manager.Stat.AttackRange,
+            "Player", _manager.Stat);
     }
 }

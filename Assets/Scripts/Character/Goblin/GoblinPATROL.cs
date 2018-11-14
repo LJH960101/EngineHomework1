@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinIDLE : GoblinFSMState
+public class GoblinPATROL : GoblinFSMState
 {
-    private float idleTime = 1.0f;
-    private float time = 0.0f;
+    public Vector3 destination;
 
     public override void BeginState()
     {
         base.BeginState();
-
-        // 적당히 랜덤으로 아이들타임을 진행시킨채로 초기화.
-        time = Random.Range(0.0f, 0.5f);
+        destination = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
     }
 
     public override void EndState()
@@ -29,10 +26,12 @@ public class GoblinIDLE : GoblinFSMState
             return;
         }
 
-        time += Time.deltaTime;
-        if (time > idleTime)
+        if (Vector3.Distance(destination, transform.position) < 0.1f)
         {
-            _manager.SetState(GoblinState.PATROL);
+            _manager.SetState(GoblinState.IDLE);
+            return;
         }
+
+        _manager.CC.CKMove(destination, _manager.Stat);
     }
 }

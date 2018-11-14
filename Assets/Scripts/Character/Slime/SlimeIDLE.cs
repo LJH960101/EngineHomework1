@@ -32,6 +32,5 @@ public class SlimeIDLE : SlimeFSMState {
         {
             _manager.SetState(SlimeState.PATROL);
         }
-
     }
 }
