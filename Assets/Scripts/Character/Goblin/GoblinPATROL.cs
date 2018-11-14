@@ -19,7 +19,8 @@ public class GoblinPATROL : GoblinFSMState
 
     private void Update()
     {
-        if (GameLib.DetectCharacter(_manager.Sight, _manager.PlayerCC) || _manager._bOnFound)
+        // 적을 찾았거나, 이미 찾은 상태면 쫒는다
+        if (_manager._bOnFound || GameLib.DetectCharacter(_manager.Sight, _manager.PlayerCC))
         {
             _manager._bOnFound = true;
             _manager.SetState(GoblinState.CHASE);

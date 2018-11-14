@@ -66,6 +66,7 @@ public class GoblinFSMManager : FSMManager
         _playercc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
         _playerTransform = _playercc.transform;
 
+        // 스테이트를 다 담는 처리
         GoblinState[] stateValues = (GoblinState[])System.Enum.GetValues(typeof(GoblinState));
         foreach (GoblinState s in stateValues)
         {
@@ -111,4 +112,6 @@ public class GoblinFSMManager : FSMManager
     {
         SetState(GoblinState.DEAD);
     }
+
+    public override bool IsDie() { return CurrentState == GoblinState.DEAD; }
 }

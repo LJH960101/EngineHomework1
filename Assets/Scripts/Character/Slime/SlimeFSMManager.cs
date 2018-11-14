@@ -100,4 +100,6 @@ public class SlimeFSMManager : FSMManager
     {
         SetState(SlimeState.DEAD);
     }
+
+    public override bool IsDie() { return CurrentState == SlimeState.DEAD; }
 }

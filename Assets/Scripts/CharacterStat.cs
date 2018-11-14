@@ -27,13 +27,9 @@ public class CharacterStat : MonoBehaviour
     [SerializeField]
     protected StatData statData;
 
-    GameObject _hpObj;
-    TextMesh _hpTextMesh;
     protected virtual void Awake()
     {
         _turnSpeed = statData.TurnSpeed;
-        _hpObj = transform.Find("HP").gameObject;
-        _hpTextMesh = _hpObj.GetComponent<TextMesh>();
     }
 
     public void TakeDamage(CharacterStat from, float damage)
@@ -64,12 +60,5 @@ public class CharacterStat : MonoBehaviour
     {
         float finalDamage = damage;
         to.TakeDamage(from, finalDamage);
-    }
-
-    protected virtual void Update()
-    {
-        // 체력 게이지의 값을 수정하고 회전을 카메라에 맞춘다.
-        _hpTextMesh.text = (_hp / _maxHp * 100f) + "%";
-        _hpObj.transform.rotation = Camera.main.transform.rotation;
     }
 }

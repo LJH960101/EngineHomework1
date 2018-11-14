@@ -52,4 +52,6 @@ public class FSMManager : MonoBehaviour
     public virtual void NotifyTargetKilled() { }
 
     public virtual void SetDeadState() { }
+
+    public virtual bool IsDie() { return false; }
 }

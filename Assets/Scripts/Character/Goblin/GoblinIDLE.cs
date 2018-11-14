@@ -22,17 +22,18 @@ public class GoblinIDLE : GoblinFSMState
 
     private void Update()
     {
-        if (GameLib.DetectCharacter(_manager.Sight, _manager.PlayerCC) || _manager._bOnFound)
-        {
-            _manager._bOnFound = true;
-            _manager.SetState(GoblinState.CHASE);
-            return;
-        }
 
         time += Time.deltaTime;
         if (time > idleTime)
         {
-            _manager.SetState(GoblinState.PATROL);
+            // 일정시간이 지나면 다음 상태로 전이
+            if (_manager._bOnFound || GameLib.DetectCharacter(_manager.Sight, _manager.PlayerCC))
+            {
+                _manager._bOnFound = true;
+                _manager.SetState(GoblinState.CHASE);
+                return;
+            }
+            else _manager.SetState(GoblinState.PATROL);
         }
     }
 }

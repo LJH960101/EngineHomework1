@@ -14,6 +14,7 @@ public class GoblinSOMMON : GoblinFSMState
         base.EndState();
     }
 
+    // 랜덤한 갯수의 슬라임을 Forward쪽으로 뿌린다.
     public void Sommon()
     {
         int sommonMany = Random.Range(1, _manager.MyStatData.GoblinSommonMany + 1);

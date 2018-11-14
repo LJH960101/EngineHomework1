@@ -16,14 +16,20 @@ MonoBehaviour:
   PlayerMaxHp: 200
   PlayerAttackRange: 2
   PlayerMoveSpeed: 10
-  PlayerPower: 10
+  PlayerStr: 10
   SlimeMaxHp: 20
   SlimeAttackRange: 2
   SlimeMoveSpeed: 6
-  SlimePower: 10
-  GoblinMaxHp: 1000
-  GoblinAttackRange: 3
+  SlimeStr: 10
+  GoblinMaxHp: 200
+  GoblinAttackRange: 4
   GoblinMoveSpeed: 5
-  GoblinPower: 10
+  GoblinStr: 10
   GoblinHillWindDamageRate: 2
+  GoblinHillWindRange: 7
+  GoblinHillWindTurnSpeed: 10
   GoblinRushDamageRate: 3
+  GoblinRushTime: 1.5
+  GoblinRushSpeed: 0.2
+  GoblinSommonMany: 3
+  GoblinSkillRate: 0.4

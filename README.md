@@ -44,10 +44,10 @@ AutoDestroyTime : 시체가 사라지는 시간
 TurnSpeed : 모든 캐릭터가 도는 속도
 
 플레이어
-PlayerMaxHp
-PlayerAttackRange
-PlayerMoveSpeed
-PlayerStr
+PlayerMaxHp : 플레이어의 최대 체력
+PlayerAttackRange : 플레이어의 공격 범위
+PlayerMoveSpeed : 플레이어의 이동 속도
+PlayerStr : 플레이어의 힘
 
 슬라임
 SlimeMaxHp
@@ -61,11 +61,13 @@ GoblinAttackRange
 GoblinMoveSpeed
 GoblinStr
 
-GoblinHillWindDamageRate : 힐윈드 패턴에서 들어가는 공격력 비례랑
+GoblinHillWindDamageRate : 힐윈드 패턴에서 들어가는 데미지 배율
 GoblinHillWindRange : 힐윈드 패턴의 반지름
+GoblinHillWindTurnSpeed : 힐윈드 패턴의 속도
 
-GoblinRushDamageRate : 질주 패턴에서 들어가는 공격력 
-GoblinRushDistance : 질주 패턴의 거리
+GoblinRushDamageRate : 질주 패턴에서 들어가는 데미지 배율 
+GoblinRushSpeed : 질주 패턴의 속도
+GoblinRushTime : 질주 패턴의 시간
 
 GoblinSommonMany : 소환 패턴의 최대 소환 수
 

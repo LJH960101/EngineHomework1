@@ -5,17 +5,17 @@ using UnityEngine;
 public static class GameLib
 {
     // 단순하게 적을 찾고, 적에게 피해를 입히는 함수
-    public static void SimpleDamageProcess(Transform transform, float Range, string targetTag, CharacterStat ownerStat)
+    public static CharacterStat SimpleDamageProcess(Transform transform, float Range, string targetTag, CharacterStat ownerStat)
     {
-        AttackProcess(
+        return AttackProcess(
             AttackTargetsByRange(transform, Range),
             targetTag, ownerStat);
     }
 
     // 단순하게 적을 찾고, 적에게 피해를 입히는 함수
-    public static void SimpleDamageProcess(Transform transform, float Range, string targetTag, CharacterStat ownerStat, int damage)
+    public static CharacterStat SimpleDamageProcess(Transform transform, float Range, string targetTag, CharacterStat ownerStat, int damage)
     {
-        AttackProcess(
+        return AttackProcess(
             AttackTargetsByRange(transform, Range),
             targetTag, ownerStat, damage);
     }
@@ -28,8 +28,9 @@ public static class GameLib
     }
 
     // 여러 오브젝트들에 대해 간단한 정보로 피해를 입히는 함수.
-    public static void AttackProcess(RaycastHit[] hitObjects, string targetTag, CharacterStat ownerStat)
+    public static CharacterStat AttackProcess(RaycastHit[] hitObjects, string targetTag, CharacterStat ownerStat)
     {
+        CharacterStat lastHit = null;
         foreach (var hitObject in hitObjects)
         {
             if (hitObject.collider.gameObject.tag == targetTag)
@@ -38,13 +39,16 @@ public static class GameLib
                     hitObject.collider.GetComponent<CharacterStat>();
 
                 CharacterStat.ProcessDamage(ownerStat, targetStat);
+                lastHit = targetStat;
             }
         }
+        return lastHit;
     }
 
     // 여러 오브젝트들에 대해 간단한 정보로 피해를 입히는 함수.
-    public static void AttackProcess(RaycastHit[] hitObjects, string targetTag, CharacterStat ownerStat, int damage)
+    public static CharacterStat AttackProcess(RaycastHit[] hitObjects, string targetTag, CharacterStat ownerStat, int damage)
     {
+        CharacterStat lastHit = null;
         foreach (var hitObject in hitObjects)
         {
             if (hitObject.collider.gameObject.tag == targetTag)
@@ -53,8 +57,10 @@ public static class GameLib
                     hitObject.collider.GetComponent<CharacterStat>();
 
                 CharacterStat.ProcessDamage(ownerStat, targetStat, damage);
+                lastHit = targetStat;
             }
         }
+        return lastHit;
     }
 
     public static void CKMove(this CharacterController cc,

@@ -18,6 +18,9 @@ public class PlayerFSMManager : FSMManager
     public PlayerState startState = PlayerState.IDLE;
     private Dictionary<PlayerState, FSMState> _states = new Dictionary<PlayerState, FSMState>();
 
+    [HideInInspector]
+    public CharacterStat _lastAttack;
+
     [SerializeField]
     private PlayerState _currentState;
     public PlayerState CurrentState
@@ -111,6 +114,7 @@ public class PlayerFSMManager : FSMManager
 
     public override void NotifyTargetKilled()
     {
+        _lastAttack = null;
         SetState(PlayerState.IDLE);
     }
 
@@ -118,4 +122,6 @@ public class PlayerFSMManager : FSMManager
     {
         SetState(PlayerState.DEAD);
     }
+
+    public override bool IsDie() { return CurrentState == PlayerState.DEAD; }
 }
